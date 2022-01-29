@@ -3,8 +3,8 @@ const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
 async function modifyPdf() {
  
   // Fetch an existing PDF document
-  const url = 'Consentimiento_latex.pdf'//'https://pdf-lib.js.org/assets/with_update_sections.pdf'
-  const existingPdfBytes = fetch(url).then(res => res.arrayBuffer());
+  const url = 'https://pdf-lib.js.org/assets/with_update_sections.pdf';//'https://github.com/ANDRESHZ/formDataset/raw/main/Formulario%20Recoleccion/DatosBasicos/Consentimiento_latex.pdf'//'Consentimiento_latex.pdf'//'https://pdf-lib.js.org/assets/with_update_sections.pdf'
+  const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer());
 
   // Load a PDFDocument from the existing PDF bytes
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
