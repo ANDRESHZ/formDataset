@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="js/pdf-lib/utils.js"></script>
 	<script type="text/javascript" src="js/pdf-lib/fontkit.umd.js"></script>
 	<script src="https://unpkg.com/downloadjs@1.4.7"></script>
+	<script type="text/javascript" src="js/dataB64.js"></script>
 </head>
 
 <body style=background:#ffffff; id="main_body">
@@ -25,7 +26,7 @@
 					src="images/logo PUC.png" alt="s">
 				<p>Ayuda Dataset Cambios Edad</p>
 			</a></h1>
-		<form id="form1" class="appnitro" method="post" action="" onkeydown="return event.key != 'Enter';">
+		<form id="form1" class="appnitro" method="post" action="">
 			<div class="form_description">
 				<p style="text-align: justify;">Usted ha sido invitado a participar en el estudio "<b>Desarrollo de Base
 						de datos de variación en la edad, cambios estéticos o fisionómicos</b>” a cargo del investigador
@@ -42,15 +43,15 @@
 								id="fecha1"> DD/MM/AAAA </b></i></label>
 				</li>
 				<li id="li_1">
-					<label class="description" for="element_1">Nombre: </label>
+					<label class="description" for="element_1">Nombre Completo: </label>
 					<div>
 						<input required id="element_1" name="element_1" class="element text medium" type="text"
-							maxlength="255" value="" placeholder="Ingrese nombre aqui..." />
+							maxlength="255" value="" placeholder="Ingrese nombre completo aqui..." onkeydown="return event.key != 'Enter';"/>
 					</div>
-					<p class="guidelines" id="guide_1"><small>Nombre completo</small></p>
+					<p class="guidelines" id="guide_1"><small>Nombre completo (Incluya Nombres y Apellidos)</small></p>
 				</li>
 				<li id="li_5">
-					<label class="description" for="element_5">Genero: </label>
+					<label class="description" for="element_5" onkeydown="return event.key != 'Enter';">Genero: </label>
 					<div>
 						<select class="element select medium" id="element_5" name="element_5">
 							<option value="1" selected="selected">Femenino</option>
@@ -63,7 +64,7 @@
 							médico al
 							nacer o posterior).</small></p>
 				</li>
-				<li id="li_4">
+				<li id="li_4" onkeydown="return event.key != 'Enter';">
 					<label class="description" for="element_4">Fecha de nacimiento: </label>
 					<span>
 						<input required id="element_4_1" name="element_4_1" class="element text" size="2" maxlength="2"
@@ -100,7 +101,7 @@
 					<label class="description" for="element_3">Email: </label>
 					<div>
 						<input required id="element_3" name="element_3" class="element text medium" type="text"
-							maxlength="255" value="" placeholder="bahuerfano@uc.cl" />
+							maxlength="255" value="" placeholder="bahuerfano@uc.cl" onkeydown="return event.key != 'Enter';"/>
 					</div>
 					<p class="guidelines" id="guide_3"><small>Correo electronico</small></p>
 				</li>
@@ -108,7 +109,7 @@
 					<label class="description" for="element_6">Telefono (opcional): </label>
 					<div>
 						<input id="element_6" name="element_6" class="element text medium" type="text" maxlength="255"
-							value="" placeholder="+56912345678" />
+							value="" placeholder="+56912345678" onkeydown="return event.key != 'Enter';"/>
 					</div>
 					<p class="guidelines" id="guide_6"><small>Teléfono de contacto Ejemplo +56912345678 o +573215671098
 							(opcional)</small></p>
