@@ -1,0 +1,26 @@
+body{ background-color: ivory; }
+canvas{
+  border: 1px solid rgb(0, 0, 0);
+  position: absolute;
+}
+#canvasWrapper{
+  position:relative;
+}
+
+.container{
+    width:550px !important;
+    margin: 25px auto;     
+    padding: 5px;    
+    border-radius: 10px;
+}
+
+    
+#canvas {
+    width:2000px;
+    height:2000px;
+    border: 10px solid transparent;
+}
+.rectangle {
+    border: 1px solid #FF0000;
+    position: absolute;
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FD - Colaboración Dataset Cambios Edad</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/view.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/dropzone.min.css" media="all">
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <script type="text/javascript" src="js/faceDet/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/faceDet/ccv.js"></script>
+    <script type="text/javascript" src="js/faceDet/cascade.js"></script>
+    <script type="text/javascript" src="js/faceDet/jquery.facedetection.js"></script>
+    <script type="text/javascript" src="js/tooltip.js"></script>
+</head>
+
+<body style="background:#ffffff;margin-top: 0px;" id="main_body">
+    <div>
+        <img style="max-width: 913px; background: #fff; margin: 0 auto; text-align: left; width: 81.5%;" id="top"
+            src="images/top.png" alt="">
+    </div>
+    <div style="background:#57c420f2;" id="form_container">
+
+        <h1><a style="align-items: center;"><img style="width: 200px; height: auto; " id="logo"
+                    src="images/logo PUC.png" alt="s">
+                <p>Ayuda Dataset Cambios Edad</p>
+            </a></h1>
+        <form id="form1" class="appnitro" method="post" action="">
+            <div class="form_description">
+                <p style="text-align: justify;">Usted ha sido invitado a participar en el estudio "<b>Desarrollo de Base
+                        de datos de variación en la edad, cambios estéticos o fisionómicos</b>” a cargo del investigador
+                    MSc Benjamin Andres Huerfano Zapata, estudiante de Doctorado en ciencias de la ingeniería por el
+                    Departamento de Ciencia de la Computación, de la Pontificia Universidad Católica de Chile (PUC).
+                    Este estudio está siendo financiado por Agencia Nacional de Investigación y Desarrollo de Chile -
+                    ANID. El objeto de esta carta es ayudarlo a tomar la decisión de participar en la presente
+                    investigación.</p>
+            </div>
+            <div class="RecortarSubir">
+                <ul>
+                    <div class="wrapper" class="picture-container" style="text-align: left;">
+                        <div id="AutoDetect" style="visibility: visible;display: block;">
+                            <img id="picture" class="picture" src="images/FD4.jpg" width="100%">
+
+                            <div id="CarasAqui" style="text-align: left;"></div>
+                            <div>
+                                <input class="button_text" type="button" id="start-btn" value="Buscar Caras"
+                                    style="display: inline; font-size: 14px; font-weight: bold;" />
+                                <p id="pManual" style="visibility: hidden;display: none;">
+                                    Si tu cara no aparece puedes hacerlo manualmente >>>
+                                    <input class="button_text" type="button" id="manual-btn" value="Manual"
+                                        style="visibility: hidden;display: none; font-size: 14px; font-weight: bold;" />
+                                </p>
+                            </div>
+                        </div>
+                        <div id="ManualDetect" style="visibility: hidden;display: none;">
+                            <div id="canvasWrapper">
+                                <div class="container">
+                                    <div>
+                                        <hr style="text-align: center;">
+                                        <canvas id="myCanvas" style="overflow:none" width="400" height="400"></canvas>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Selecciona tu cara con un recuadro como el <b><i><a href="#" class="screenshot"
+                                                rel="images/ExampleRect.png" title="">Ejemplo</a></i></b>
+                                </p>
+                                <!-- <img id="picture" class="picture" src="images/ExampleRect.png" width="400"> -->
+                                <p>Si quieres regresar a hacerlo automatico nuevamente>>> <input class="button_text"
+                                        type="button" id="auto-btn" value="Automatico"
+                                        style="font-size: 14px; font-weight: bold;" /></p>
+                            </div>
+                            <script type="text/javascript" src="js/drawRectangle.js"></script>
+                        </div>
+                </ul>
+                <br id="Saltousar"><br>
+                <input class="button_text" type="button" id="usar-btn" value="Usar Recuadro"
+                    style="color:darkgreen;font-weight: bold;visibility: hidden; display: none;font-size: 14px; font-weight: bold;" onclick="DBCLK(event);"/>
+                <div id="UsoRostros" style="display: block; border: 2px solid darkgray;">
+                    <input class="button_text" type="button" id="eliminar-btn" value="Borrar"
+                        style="color:darkred;font-size: 14px; font-weight: bold;visibility: hidden; display: none;" />
+                </div>
+            </div>
+        </form>
+        <div class="RecortarSubir">
+            <div class="forms-container" id="forms_container"
+                style="margin: 0 auto; width: 70%;background: none;text-align: center;">
+                <form class="dropzone" id="formUploadFile" action="upload.php" style="background: none;">
+                    <div class="dz-message">
+                        <div class="icon">
+                            <i><svg style="width: 12%;height: 12%;" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 640 512">
+                                    <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                                    <path
+                                        d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zM393.4 288H328v112c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V288h-65.4c-14.3 0-21.4-17.2-11.3-27.3l105.4-105.4c6.2-6.2 16.4-6.2 22.6 0l105.4 105.4c10.1 10.1 2.9 27.3-11.3 27.3z" />
+                                </svg></i>
+                        </div>
+                        <h2>Suelta tus archivos aqui</h2>
+                        <span class="note">No hay archivos Seleccionados</span>
+                    </div>
+                    <div class="fallback">
+                        <input type="file" name="file" accept="image/*">
+                    </div>
+                    <div>
+                        <!-- <label for="muestrario">Color:</label> -->
+                        <!-- <input type="color" value="#ff0000" id="muestrario"> -->
+                    </div>
+                </form>
+            </div>
+            <br>
+            <div style="margin-left: 10px;">
+                <input class="button_text" type="button" id="FIN-btn" value="Finalizar Recortes"
+                    style="color:black;font-weight: bold;font-size: 14pt; visibility: hidden; display: none;" />
+                <br>
+            </div>
+        </div>
+        <div class="Adicionales" style="visibility: hidden; display: none;">
+            <!-- ENVIO DE DATOS AQUI ABAJO -->
+            <div style="margin-left: 10px;display: block;">
+                <input class="button_text" type="button" id="VolverREC-btn" value="Volver a Recortes"
+                    style="color:darkcyan;font-weight: bold;font-size: 14pt;" />
+            </div>
+            <div id="UsoRostros2" style="display: block; border: 2px solid darkgray;">
+            </div>
+            <form id="form_X" class="appnitro" method="post" action="">
+                <div id="DatosImages" style="display: block; border: 2px solid darkgray;">
+                    <ul>
+                        <li id="li_1" onkeydown="return event.key != 'Enter';">
+                            <label class="description" for="element_1">Mes y año de la foto (aproximados):</label>
+                            <span>
+                                <input id="element_1_1" name="element_1_1" class="element text" size="2" maxlength="2"
+                                    value="01" type="text" style="visibility: hidden; display: none;">
+                                <label for="element_1_1" style="visibility: hidden; display: none;"> </label>
+                            </span>
+                            <span>
+                                <input id="element_1_2" name="element_1_2" class="element text" size="2" maxlength="2"
+                                    value="" type="text"> /
+                                <label for="element_1_2">MM</label>
+                            </span>
+                            <span>
+                                <input id="element_1_3" name="element_1_3" class="element text" size="4" maxlength="4"
+                                    value="" type="text">
+                                <label for="element_1_3">YYYY</label>
+                            </span>
+
+                            <span id="calendar_1">
+                                <img id="cal_img_1" class="datepicker" src="images/calendar.gif" alt="Pick a date.">
+                            </span>
+                            <script type="text/javascript">
+                                Calendar.setup({
+                                    inputField: "element_1_3",
+                                    baseField: "element_1",
+                                    displayArea: "calendar_1",
+                                    button: "cal_img_1",
+                                    ifFormat: "%B %e, %Y",
+                                    onSelect: selectEuropeDate
+                                });
+                            </script>
+                            <p class="guidelines" id="guide_1"><small>Fecha aproximada de la foto (solo mes y
+                                    año)</small></p>
+                        </li>
+                        <li id="li_2">
+                            <label class="description" for="element_2" onkeydown="return event.key != 'Enter';">Cabello:
+                            </label>
+                            <div>
+                                <select class="element select medium" id="element_2" name="element_2">
+                                    <option value="1">Sin cabello</option>
+                                    <option value="2">Corto</option>
+                                    <option value="3">Medio</option>
+                                    <option value="4">Largo</option>
+                                </select>
+                            </div>
+                            <p class="guidelines" id="guide_5"><small>indique si tiene cabello es CORTO, MEDIO mas de 6
+                                    cm o si es LARGO mas de <b>15 cm</b> es largo</small></p>
+                        </li>
+                        <li id="li_3">
+                            <label class="description" for="element_3"
+                                onkeydown="return event.key != 'Enter';">Gafas:</label>
+                            <div>
+                                <select class="element select medium" id="element_3" name="element_3">
+                                    <option value="1">Sin Gafas</option>
+                                    <option value="2">Gafas de Sol</option>
+                                    <option value="3">Gafas Transparentes</option>
+                                    <option value="4">Lentes de Contacto Trasparentes</option>
+                                    <option value="5">Lentes de Contacto con Color</option>
+                                </select>
+                            </div>
+                            <p class="guidelines" id="guide_3"> Esta usando Gafas o lentes de contacto en la imagen</p>
+                        </li>
+                        <li id="li_4">
+                            <label class="description" for="element_4">Hacia que parte de la pantalla esta
+                                viendo la cara (aproximadamente)?</label>
+                            <div style="display: inline;">
+                                <table class="vistas" style="text-align: center;">
+                                    <tbody>
+                                        <tr>
+                                            <th class="tg-0lax">
+                                                <input required type="radio" id="RadB1" name="mirar" value="Izq Arriba">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB2" name="mirar" value="Arriba">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB3" name="mirar" value="Der Arriba">
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB4" name="mirar" value="Izquierda">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB5" name="mirar" value="Al Frente">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB6" name="mirar" value="Derecha">
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB7" name="mirar" value="Izq Abajo">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB8" name="mirar" value="Abajo">
+                                            </th>
+                                            <th class="tg-0lax">
+                                                <input type="radio" id="RadB9" name="mirar" value="Der Abajo">
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p id="txtmira" style="font-weight: bold;"></p>
+                            </div>
+                            <p class="guidelines" id="guide_7" style="align-items: center;"><b>Posicion mas proxima de
+                                    vista:</b><small>
+                                    <table class="guidelines" style="margin-top:20px;">
+                                        <tbody>
+                                            <tr>
+                                                <th class="tg-0lax">Izq╔Arriba</th>
+                                                <th class="tg-0lax">↑Arriba</th>
+                                                <th class="tg-0lax">Der╗Arriba</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="tg-0lax">Izquierda←</th>
+                                                <th class="tg-0lax">[Al frente]</th>
+                                                <th class="tg-0lax">→Derecha</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="tg-0lax">Izq╚Abajo</th>
+                                                <th class="tg-0lax">↓Abajo</th>
+                                                <th class="tg-0lax">Der╝Abajo</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </small></p>
+                        </li>
+                        <li id="li_5">
+                            <label class="description" for="element_5">¿La imagen es a color o escala de grises?</label>
+                            <div style="display: inline;">
+                                <input required type="radio" id="RadBBN" name="Color_BN" value="0"
+                                    style="display: inline;">
+                                <label for="0" style="display: inline;font-size: 12pt;">A Grises</label>
+                                <input type="radio" id="RadBColor" name="Color_BN" value="3" style="display: inline;">
+                                <label for="3" style="display: inline; font-size: 12pt;">A Color</label>
+                            </div>
+                            <p class="guidelines" id="guide_5"><small>Seleccione si la imagen de la cara es a color o a
+                                    blanco y negro</small></p>
+                        </li>
+                        <li id="li_6">
+                            <label class="description" for="element_6"
+                                onkeydown="return event.key != 'Enter';">¿Consideras
+                                que aparentas menos, más o la edad que tenias en esta foto?</label>
+                            <div>
+                                <select class="element select medium" id="element_6" name="element_6">
+                                    <option value="1">Mucha Menos Edad</option>
+                                    <option value="2">Menos Edad</option>
+                                    <option value="3">Cercano a la Edad</option>
+                                    <option value="4">Mas Edad</option>
+                                    <option value="5">Mucha Mas Edad</option>
+                                </select>
+                            </div>
+                            <p class="guidelines" id="guide_6"> Al momento de la foto solían decirte o Consideras que
+                                aparentas menos, más o la edad que tenias de la foto</p>
+                        </li>
+                        <li id="li_7">
+                            <label class="description" for="element_7" onkeydown="return event.key != 'Enter';">Bello
+                                facial:</label>
+                            <div>
+                                <select class="element select medium" id="element_7_1" name="element_7_1">
+                                    <option value="1">Nada</option>
+                                    <option value="2">Sombra</option>
+                                    <option value="3">Poca</option>
+                                    <option value="4">Media</option>
+                                    <option value="5">Larga</option>
+                                </select>
+                            </div>
+                            <p class="guidelines" id="guide_7"> Al momento de la foto solían decirte o Consideras que
+                                aparentas menos, más o la edad que tenias de la foto</p>
+                        </li>
+                        <li id="li_8">
+                            <label class="description" for="element_8" onkeydown="return event.key != 'Enter';">Ha tenido alguna cirugía/incidente en que haya cambiado su aspecto en la cara, cerca o sobre:</label>
+                            <div id="Checkeddiv">
+                                <input type="checkbox" id="ch_1" name="CxAcci" style="display: inline;">
+                                <label for="Nariz" style="display: inline; font-size: 11pt;">Nariz</label>
+                                <input type="checkbox" id="ch_2" name="CxAcci" style="display: inline;">
+                                <label for="Labios" style="display: inline; font-size: 11pt;">Labios</label>
+                                <input type="checkbox" id="ch_3" name="CxAcci" style="display: inline;">
+                                <label for="Menton" style="display: inline; font-size: 11pt;">Mentón</label>
+                                <input type="checkbox" id="ch_4" name="CxAcci" style="display: inline;">
+                                <label for="Ojos" style="display: inline; font-size: 11pt;">Ojos</label>
+                                <input type="checkbox" id="ch_5" name="CxAcci" style="display: inline;">
+                                <label for="Frente"style="display: inline; font-size: 11pt;">Frente</label>
+                                <input type="checkbox" id="ch_6" name="CxAcci" style="display: inline;">
+                                <label for="Cabeza" style="display: inline; font-size: 11pt;">Cabeza</label>
+                                <input type="checkbox" id="ch_7" name="CxAcci" style="display: inline;">
+                                <label for="Cachetes" style="display: inline; font-size: 11pt;">Cachetes</label>
+                            </div>
+                            <p class="guidelines" id="guide_8">EJ: <b>Fractura de tabique => Nariz</b> Si ha tenido alguna cirugía, accidente, incidente que cambio su aspecto a nivel facial (incluida parálisis) por favor indicar en que zona o cercano a que zonas tiene estos cambios.</p>
+                        </li>
+                    </ul>
+            </form>
+        </div>
+        <br>
+        <div style="margin-left: 10px;">
+            <input class="button_text" type="button" id="SubirData-btn" value="Enviar Datos"
+                style="color:black;font-weight: bold;font-size: 14pt;"/>
+                <!-- visibility: hidden; display: none; -->
+            <br>
+        </div>
+    </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="js/dropZone/dropzone.min.js"></script>
+<script type="text/javascript" src="js/DetectarCaras.js"></script>
+<script>
+    Dropzone.options.formUploadFile = {
+        maxFilesize: 3,
+        // uploadMultiple: false,
+        // maxFiles: 1,
+        acceptedFiles: "image/*",
+        renameFile: function (file) {
+            // let newName = new Date().getTime() + nombreUsar+'_' + file.name;
+            let newName = nombreUsar + '_' + file.name;
+            return newName;
+        },
+        init: function () {
+            this.on("success", file => {
+                // alert("El archivo a sido cargado correctamente");
+                var srcdrop = nombreUsar + '_' + file.name;
+                IMGcargada = 'uploads/' + srcdrop;
+                cambiarSCR('uploads/' + file.name);
+                ResizeCanvasPrint();
+                clearPRos();
+            });
+        }
+    };
+</script>
+
+
+</html>
